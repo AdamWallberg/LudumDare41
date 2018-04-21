@@ -33,7 +33,7 @@ public class Enemy1 : MonoBehaviour
 		// Fire
 		const float startAngle = 120;
 		const float endAngle = 240;
-		const int numProjectiles = 20;
+		const int numProjectiles = 10;
 		for(int i = 0; i < numProjectiles; i++)
 		{
 			float angle = (i / (float)numProjectiles) * (endAngle - startAngle) + startAngle;

@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
 	public ParticleSystem _hitParticleSystem;
 
+	public AudioSource _hurtSound;
+
 	void Start ()
 	{
 		_renderers = GetComponentsInChildren<SpriteRenderer>();
@@ -63,6 +65,7 @@ public class Player : MonoBehaviour
 			_invincibilityTimer = _invincibilityTime;
 			_controller._rb.AddForce(Vector2.left * _knockbackForce);
 			Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
+			_hurtSound.Play();
 			StartCoroutine(Blink());
 		}
 	}

@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 2779988521
+    locked: 0
+  - name: kitten
+    uniqueID: 2296622317
+    locked: 0
+  - name: enemy
+    uniqueID: 127595179
+    locked: 0
