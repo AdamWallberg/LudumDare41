@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
 		Vector2 movement;
 		movement.x = Input.GetAxisRaw("Horizontal");
 		movement.y = Input.GetAxisRaw("Vertical");
-		movement.Normalize();
+		if(movement.magnitude > 1.0f)
+			movement.Normalize();
 		return movement;
 	}
 }
