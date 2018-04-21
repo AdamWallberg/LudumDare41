@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 	public SpriteRenderer[] _renderers;
+	PlayerController _controller;
 
 	public float _hitDamage = 0.1f;
+	public float _knockbackForce = 100.0f;
 	public float _decreaseSpeed = 30.0f;
 	public float _invincibilityTime = 2.0f;
 	float _invincibilityTimer = 0.0f;
@@ -20,9 +22,12 @@ public class Player : MonoBehaviour
 	public Image _playImage;
 	public Image _cleanImage;
 
+	public ParticleSystem _hitParticleSystem;
+
 	void Start ()
 	{
 		_renderers = GetComponentsInChildren<SpriteRenderer>();
+		_controller = GetComponent<PlayerController>();
 	}
 	
 	void Update ()
@@ -56,6 +61,8 @@ public class Player : MonoBehaviour
 			_play -= _hitDamage;
 			_clean -= _hitDamage;
 			_invincibilityTimer = _invincibilityTime;
+			_controller._rb.AddForce(Vector2.left * _knockbackForce);
+			Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
 			StartCoroutine(Blink());
 		}
 	}

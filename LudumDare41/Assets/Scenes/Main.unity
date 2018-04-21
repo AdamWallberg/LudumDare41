@@ -1259,7 +1259,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 479279524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.176, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 152436031}
@@ -1815,6 +1815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4773f991686536942a77eaf113ec7ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rb: {fileID: 0}
   _movementSpeed: 3
   _accelerationTime: 0.1
   _bobSpeed: 0.5
@@ -1867,11 +1868,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderers: []
   _hitDamage: 0.1
+  _knockbackForce: 100
   _decreaseSpeed: 30
   _invincibilityTime: 2
   _foodImage: {fileID: 2134283238}
   _playImage: {fileID: 429297416}
   _cleanImage: {fileID: 488093037}
+  _hitParticleSystem: {fileID: 198100321194526392, guid: c967ba416add6aa4aaefac641368fde5,
+    type: 2}
 --- !u!1 &899142630
 GameObject:
   m_ObjectHideFlags: 0
