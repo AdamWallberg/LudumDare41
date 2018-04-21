@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 	public float _accelerationTime = 0.01f;
 	Vector2 _velocityVel;
 
+	public float _bobSpeed = 0.5f;
+	public float _bobAmount = 0.1f;
+
 	void Start ()
 	{
 		_rb = GetComponent<Rigidbody2D>();
@@ -28,6 +31,9 @@ public class PlayerController : MonoBehaviour
 			_accelerationTime, 
 			1000.0f, 
 			Time.deltaTime);
+
+		velocity += Vector2.up * Mathf.Sin(
+			(Mathf.Deg2Rad * Time.time) * 360.0f * _bobSpeed) * _bobAmount;
 
 		_rb.velocity = velocity;
 	}
