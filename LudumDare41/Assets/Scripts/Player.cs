@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -40,9 +41,9 @@ public class Player : MonoBehaviour
 		_play -= Time.deltaTime * (1.0f / _decreaseSpeed);
 		_clean -= Time.deltaTime * (1.0f / _decreaseSpeed);
 
-		_food = Mathf.Clamp01(_food);
-		_play = Mathf.Clamp01(_play);
-		_clean = Mathf.Clamp01(_clean);
+		_food = Mathf.Clamp(_food, -1.0f, 1.0f);
+		_play = Mathf.Clamp(_play, -1.0f, 1.0f);
+		_clean = Mathf.Clamp(_clean, -1.0f, 1.0f);
 	}
 
 	private void OnGUI()
@@ -66,6 +67,11 @@ public class Player : MonoBehaviour
 			_controller._rb.AddForce(Vector2.left * _knockbackForce);
 			Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
 			_hurtSound.Play();
+			if (_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f)
+			{
+				SceneManager.LoadScene("GameOver");
+				return;
+			}
 			StartCoroutine(Blink());
 		}
 	}
