@@ -1051,6 +1051,26 @@ Prefab:
       propertyPath: _immortal
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82522252603390562, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 82952552800970260, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 82732802595349494, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82264700319676978, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
   m_IsPrefabParent: 0
@@ -2593,7 +2613,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec8a2da7e74c99b4689f90bea93cfb59, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3341,6 +3361,7 @@ MonoBehaviour:
   _prefabs:
   - {fileID: 4065942645438340, guid: 015a9bc6cc5ae0f4b9dbb9edf59062ec, type: 2}
   - {fileID: 4878135314612460, guid: 2c26879149d65dc499c655ed1b26ce95, type: 2}
+  - {fileID: 4602117465131154, guid: 07ec73e5247272c409f83e113ae47858, type: 2}
   _top: {fileID: 1438504069}
   _bottom: {fileID: 144234997}
 --- !u!4 &1403822157

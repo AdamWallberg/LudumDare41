@@ -16,6 +16,9 @@ public class GameOverText : MonoBehaviour
 		"Your mother and I are very disappointed.",
 		"Look what you did.",
 		":(",
+		"What's wrong with you?",
+		"I really don't have time for this.",
+		"Could you play in traffic instead?",
 	};
 
 	void Start ()

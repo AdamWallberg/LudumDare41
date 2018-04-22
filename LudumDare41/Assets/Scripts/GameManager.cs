@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-		
+		Projectile._recentlyPlayedSound = false;
 	}
 	
 	void Update ()
