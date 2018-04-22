@@ -800,6 +800,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 2048
+  _particleSystem: {fileID: 198378855463829106, guid: 54899e3a89026f540a845abecd78bec4,
+    type: 2}
 --- !u!212 &212033940102168988
 SpriteRenderer:
   m_ObjectHideFlags: 1

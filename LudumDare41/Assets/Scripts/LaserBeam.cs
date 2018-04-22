@@ -6,6 +6,7 @@ public class LaserBeam : MonoBehaviour
 {
 	BoxCollider2D _coll;
 	public LayerMask _layerMask;
+	public ParticleSystem _particleSystem;
 	void Start ()
 	{
 		_coll = GetComponent<BoxCollider2D>();
@@ -20,6 +21,7 @@ public class LaserBeam : MonoBehaviour
 		{
 			Destroy(c.gameObject);
 			FindObjectOfType<Player>().OnPlay();
+			Instantiate(_particleSystem, c.transform.position, Quaternion.identity);
 		}
 	}
 }
