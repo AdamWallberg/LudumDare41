@@ -88,10 +88,9 @@ public class Player : MonoBehaviour
 		if (_dead)
 			return;
 
-		if (_invincibilityTimer > 0.0f)
-			return;
-		if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
+		if ((collision.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
 			collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+			&& _invincibilityTime <= 0.0f)
 		{
 			_food -= _hitDamage;
 			_play -= _hitDamage;
@@ -109,6 +108,12 @@ public class Player : MonoBehaviour
 			_gun.transform.position = _gunPlacement.position;
 			_gun.SetParent(_gunPlacement);
 			_gun.GetComponent<Projectile>().enabled = false;
+		}
+		else if(collision.gameObject.layer == LayerMask.NameToLayer("WaterDrop"))
+		{
+			_pickupSound.Play();
+			_clean += 0.08f;
+			Destroy(collision.gameObject);
 		}
 	}
 
