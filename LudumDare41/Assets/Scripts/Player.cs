@@ -44,6 +44,11 @@ public class Player : MonoBehaviour
 		_food = Mathf.Clamp(_food, -1.0f, 1.0f);
 		_play = Mathf.Clamp(_play, -1.0f, 1.0f);
 		_clean = Mathf.Clamp(_clean, -1.0f, 1.0f);
+
+		if (_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f)
+		{
+			SceneManager.LoadScene("GameOver");
+		}
 	}
 
 	private void OnGUI()
@@ -67,11 +72,6 @@ public class Player : MonoBehaviour
 			_controller._rb.AddForce(Vector2.left * _knockbackForce);
 			Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
 			_hurtSound.Play();
-			if (_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f)
-			{
-				SceneManager.LoadScene("GameOver");
-				return;
-			}
 			StartCoroutine(Blink());
 		}
 	}
