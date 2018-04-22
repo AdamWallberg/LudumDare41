@@ -18,7 +18,6 @@ public class Enemy1 : MonoBehaviour
 		StartCoroutine(Behaviour());
 	}
 
-	
 	IEnumerator Behaviour()
 	{
 		// Appear

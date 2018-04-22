@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 	public ParticleSystem _hitParticleSystem;
 
 	public AudioSource _hurtSound;
+	public AudioSource _deathSound;
 
 	public AudioSource _pickupSound;
 	public AudioSource _fireSound;
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
 
 	public Transform _laserPrefab;
 
+	bool _dead = false;
+
 	void Start ()
 	{
 		_renderers = GetComponentsInChildren<SpriteRenderer>();
@@ -43,6 +46,15 @@ public class Player : MonoBehaviour
 	
 	void Update ()
 	{
+		if ((_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f) && !_dead)
+		{
+			StartCoroutine(Die());
+			_dead = true;
+		}
+
+		if (_dead)
+			return;
+
 		_invincibilityTimer -= Time.deltaTime;
 
 		_food -= Time.deltaTime * (1.0f / _decreaseSpeed);
@@ -52,11 +64,6 @@ public class Player : MonoBehaviour
 		_food = Mathf.Clamp(_food, -1.0f, 1.0f);
 		_play = Mathf.Clamp(_play, -1.0f, 1.0f);
 		_clean = Mathf.Clamp(_clean, -1.0f, 1.0f);
-
-		if (_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f)
-		{
-			SceneManager.LoadScene("GameOver");
-		}
 
 		if(Input.GetButtonDown("Fire1") && _gun)
 		{
@@ -78,6 +85,9 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		if (_dead)
+			return;
+
 		if (_invincibilityTimer > 0.0f)
 			return;
 		if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
@@ -116,6 +126,18 @@ public class Player : MonoBehaviour
 		{
 			renderer.enabled = true;
 		}
+		yield return null;
+	}
+
+	IEnumerator Die()
+	{
+		yield return new WaitForSeconds(0.2f);
+		_deathSound.Play();
+		yield return new WaitForSeconds(0.2f);
+		_deathSound.Play();
+		yield return new WaitForSeconds(0.2f);
+
+		SceneManager.LoadScene("GameOver");
 		yield return null;
 	}
 
