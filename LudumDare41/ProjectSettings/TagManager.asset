@@ -18,7 +18,7 @@ TagManager:
   - EnemyProjectile
   - Enemy
   - Bounds
-  - 
+  - Gun
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: enemy
     uniqueID: 127595179
+    locked: 0
+  - name: items
+    uniqueID: 2352639159
     locked: 0

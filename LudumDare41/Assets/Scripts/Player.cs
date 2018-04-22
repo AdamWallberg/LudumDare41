@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
 
 	public AudioSource _hurtSound;
 
+	public AudioSource _pickupSound;
+	public AudioSource _fireSound;
+	public Transform _gunPlacement;
+	Transform _gun = null;
+
 	void Start ()
 	{
 		_renderers = GetComponentsInChildren<SpriteRenderer>();
@@ -48,6 +53,13 @@ public class Player : MonoBehaviour
 		if (_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f)
 		{
 			SceneManager.LoadScene("GameOver");
+		}
+
+		if(Input.GetButtonDown("Fire1") && _gun)
+		{
+			_fireSound.Play();
+			Destroy(_gun.gameObject);
+			_gun = null;
 		}
 	}
 
@@ -73,6 +85,13 @@ public class Player : MonoBehaviour
 			Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
 			_hurtSound.Play();
 			StartCoroutine(Blink());
+		}
+		else if(collision.gameObject.layer == LayerMask.NameToLayer("Gun") && !_gun)
+		{
+			_pickupSound.Play();
+			_gun = collision.gameObject.transform;
+			_gun.transform.position = _gunPlacement.position;
+			_gun.SetParent(_gunPlacement);
 		}
 	}
 

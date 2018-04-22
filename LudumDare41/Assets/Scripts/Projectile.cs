@@ -7,6 +7,12 @@ public class Projectile : MonoBehaviour
 	public Vector2 _direction;
 	public float _speed = 3.0f;
 
+	private void Start()
+	{
+		int rotation = Random.Range(0, 4);
+		transform.Rotate(new Vector3(0.0f, 0.0f, rotation * 90.0f));
+	}
+
 	void Update ()
 	{
 		transform.position += (Vector3)_direction * _speed * Time.deltaTime;
