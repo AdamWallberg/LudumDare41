@@ -19,7 +19,8 @@ public class LaserBeam : MonoBehaviour
 
 		foreach(Collider2D c in results)
 		{
-			Destroy(c.gameObject);
+			//Destroy(c.gameObject);
+			c.gameObject.SendMessage("Die", SendMessageOptions.DontRequireReceiver);
 			FindObjectOfType<Player>().OnPlay();
 			Instantiate(_particleSystem, c.transform.position, Quaternion.identity);
 		}

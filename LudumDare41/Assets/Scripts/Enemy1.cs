@@ -12,8 +12,11 @@ public class Enemy1 : MonoBehaviour
 	public Projectile _projectilePrefab;
 	public Projectile _gunPrefab;
 
+	Animator _animator;
+
 	void Start ()
 	{
+		_animator = GetComponent<Animator>();
 		_targetPosition = _target.position;
 		StartCoroutine(Behaviour());
 	}
@@ -53,6 +56,8 @@ public class Enemy1 : MonoBehaviour
 			}
 			p._direction = direction;
 			yield return new WaitForSeconds(1.0f / (float)numProjectiles);
+			if (gameObject.tag == "Dead")
+				break;
 		}
 
 		// Leave
@@ -71,5 +76,11 @@ public class Enemy1 : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	public void Die()
+	{
+		_animator.SetBool("Dead", true);
+		gameObject.tag = "Dead";
 	}
 }

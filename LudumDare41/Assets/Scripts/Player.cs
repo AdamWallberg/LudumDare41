@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+	public bool _immortal = false;
+
 	public SpriteRenderer[] _renderers;
 	PlayerController _controller;
 
@@ -46,10 +48,11 @@ public class Player : MonoBehaviour
 	
 	void Update ()
 	{
-		if ((_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f) && !_dead)
+		if ((_food <= 0.0f || _play <= 0.0f || _clean <= 0.0f) && !_dead && !_immortal)
 		{
 			StartCoroutine(Die());
 			_dead = true;
+
 		}
 
 		if (_dead)
@@ -73,14 +76,18 @@ public class Player : MonoBehaviour
 			_fireSound2.Play();
 			Destroy(_gun.gameObject, 0.2f);
 			_gun = null;
+			_controller._rb.AddForce(Vector2.left * 300.0f);
 		}
 	}
 
 	private void OnGUI()
 	{
-		_foodImage.fillAmount = _food;
-		_playImage.fillAmount = _play;
-		_cleanImage.fillAmount = _clean;
+		if(_foodImage)
+			_foodImage.fillAmount = _food;
+		if (_playImage)
+			_playImage.fillAmount = _play;
+		if (_cleanImage)
+			_cleanImage.fillAmount = _clean;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -88,18 +95,24 @@ public class Player : MonoBehaviour
 		if (_dead)
 			return;
 
-		if ((collision.gameObject.layer == LayerMask.NameToLayer("Enemy") ||
-			collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
-			&& _invincibilityTime <= 0.0f)
+		if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
 		{
-			_food -= _hitDamage;
-			_play -= _hitDamage;
-			_clean -= _hitDamage;
-			_invincibilityTimer = _invincibilityTime;
-			_controller._rb.AddForce(Vector2.left * _knockbackForce);
-			Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
-			_hurtSound.Play();
-			StartCoroutine(Blink());
+			if(collision.gameObject.tag == "Dead")
+			{
+				Destroy(collision.gameObject);
+				OnFood();
+				_pickupSound.Play();
+			}
+			else
+			{
+				TakeDamage();
+			}
+		}
+
+		if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile")
+			&& _invincibilityTimer <= 0.0f)
+		{
+			TakeDamage();
 		}
 		else if(collision.gameObject.layer == LayerMask.NameToLayer("Gun") && !_gun)
 		{
@@ -112,9 +125,21 @@ public class Player : MonoBehaviour
 		else if(collision.gameObject.layer == LayerMask.NameToLayer("WaterDrop"))
 		{
 			_pickupSound.Play();
-			_clean += 0.08f;
+			OnClean();
 			Destroy(collision.gameObject);
 		}
+	}
+
+	void TakeDamage()
+	{
+		_food -= _hitDamage;
+		_play -= _hitDamage;
+		_clean -= _hitDamage;
+		_invincibilityTimer = _invincibilityTime;
+		_controller._rb.AddForce(Vector2.left * _knockbackForce);
+		Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
+		_hurtSound.Play();
+		StartCoroutine(Blink());
 	}
 
 	IEnumerator Blink()
@@ -146,8 +171,18 @@ public class Player : MonoBehaviour
 		yield return null;
 	}
 
+	public void OnFood()
+	{
+		_food += 0.45f;
+	}
+
 	public void OnPlay()
 	{
 		_play += 0.33f;
+	}
+
+	public void OnClean()
+	{
+		_clean += 0.1f;
 	}
 }
