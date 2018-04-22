@@ -1214,6 +1214,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 488093035}
+--- !u!4 &522714534 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4655621007586040, guid: a1f2d5876de87e149b7cddf13da08fa5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1467140463}
 --- !u!1 &539255570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1336,118 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &699858669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1564748777006910, guid: a1f2d5876de87e149b7cddf13da08fa5,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 699858670}
+  - component: {fileID: 699858671}
+  m_Layer: 8
+  m_Name: FireSound2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &699858670
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4336506250205118, guid: a1f2d5876de87e149b7cddf13da08fa5,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 699858669}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 522714534}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &699858671
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 82522252603390562, guid: a1f2d5876de87e149b7cddf13da08fa5,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 699858669}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e67f1ecfc83e524cad6bde4681988f5, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &772088742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,6 +2931,29 @@ Prefab:
       propertyPath: _cleanImage
       value: 
       objectReference: {fileID: 488093037}
+    - target: {fileID: 114301513264973416, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: _laserPrefab
+      value: 
+      objectReference: {fileID: 4784034907896916, guid: 86ab643a20b823144987497ea9a95861,
+        type: 2}
+    - target: {fileID: 1789809458607048, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066361690608442, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683564853606616, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301513264973416, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: _fireSound2
+      value: 
+      objectReference: {fileID: 699858671}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
   m_IsPrefabParent: 0

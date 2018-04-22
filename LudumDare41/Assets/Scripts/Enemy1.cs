@@ -10,6 +10,7 @@ public class Enemy1 : MonoBehaviour
 	Vector3 _targetPosition;
 
 	public Projectile _projectilePrefab;
+	public Projectile _gunPrefab;
 
 	void Start ()
 	{
@@ -41,7 +42,16 @@ public class Enemy1 : MonoBehaviour
 				Mathf.Cos(Mathf.Deg2Rad * angle),
 				Mathf.Sin(Mathf.Deg2Rad * angle));
 
-			Projectile p = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
+			float r = Random.value;
+			Projectile p;
+			if (r < 0.1f)
+			{
+				p = Instantiate(_gunPrefab, transform.position, Quaternion.identity);
+			}
+			else
+			{
+				p = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
+			}
 			p._direction = direction;
 			yield return new WaitForSeconds(1.0f / (float)numProjectiles);
 		}

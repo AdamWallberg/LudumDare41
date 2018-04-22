@@ -183,3 +183,5 @@ MonoBehaviour:
   _exitSpeed: 5
   _projectilePrefab: {fileID: 114346893506929170, guid: 64a6208354277554db810b69fcd82472,
     type: 2}
+  _gunPrefab: {fileID: 114100629460671944, guid: ef7fc7990f2bc1447ac34d188998f243,
+    type: 2}

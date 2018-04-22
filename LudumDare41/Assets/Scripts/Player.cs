@@ -29,8 +29,11 @@ public class Player : MonoBehaviour
 
 	public AudioSource _pickupSound;
 	public AudioSource _fireSound;
+	public AudioSource _fireSound2;
 	public Transform _gunPlacement;
 	Transform _gun = null;
+
+	public Transform _laserPrefab;
 
 	void Start ()
 	{
@@ -57,8 +60,11 @@ public class Player : MonoBehaviour
 
 		if(Input.GetButtonDown("Fire1") && _gun)
 		{
+			Transform t = Instantiate(_laserPrefab, _gun);
+			t.position = _gun.position;
 			_fireSound.Play();
-			Destroy(_gun.gameObject);
+			_fireSound2.Play();
+			Destroy(_gun.gameObject, 0.2f);
 			_gun = null;
 		}
 	}
@@ -92,6 +98,7 @@ public class Player : MonoBehaviour
 			_gun = collision.gameObject.transform;
 			_gun.transform.position = _gunPlacement.position;
 			_gun.SetParent(_gunPlacement);
+			_gun.GetComponent<Projectile>().enabled = false;
 		}
 	}
 
@@ -110,5 +117,10 @@ public class Player : MonoBehaviour
 			renderer.enabled = true;
 		}
 		yield return null;
+	}
+
+	public void OnPlay()
+	{
+		_play += 0.33f;
 	}
 }

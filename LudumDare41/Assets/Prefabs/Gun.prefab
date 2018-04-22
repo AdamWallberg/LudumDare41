@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4771720420629834}
   - component: {fileID: 212309536955485298}
   - component: {fileID: 61975184826224604}
+  - component: {fileID: 114100629460671944}
   m_Layer: 13
   m_Name: Gun
   m_TagString: Untagged
@@ -66,6 +67,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &114100629460671944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994335931601196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc38e957aab9ef440a125ba304367ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: {x: 0, y: 0}
+  _speed: 3
+  _randomRotation: 0
 --- !u!212 &212309536955485298
 SpriteRenderer:
   m_ObjectHideFlags: 1
