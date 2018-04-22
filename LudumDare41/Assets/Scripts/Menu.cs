@@ -9,6 +9,10 @@ public class Menu : MonoBehaviour
 	public Transform _selector;
 	int _selection = 0;
 	bool _pressed = false;
+
+	public AudioSource _moveSound;
+	public AudioSource _selectSound;
+
 	void Start ()
 	{
 		
@@ -29,6 +33,7 @@ public class Menu : MonoBehaviour
 					_selection = _buttons.Length - 1;
 
 				_selector.position = _buttons[_selection].position - Vector3.right * 0.5f;
+				_moveSound.Play();
 			}
 		}
 		else
@@ -36,6 +41,7 @@ public class Menu : MonoBehaviour
 
 		if(Input.GetButtonDown("Submit"))
 		{
+			_selectSound.Play();
 			if(_selection == 0)
 			{
 				SceneManager.LoadScene("Main");
