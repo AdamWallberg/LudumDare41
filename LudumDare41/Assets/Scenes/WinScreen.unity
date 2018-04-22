@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 335808402}
+  - component: {fileID: 335808403}
   m_Layer: 0
   m_Name: _WinScreenManager
   m_TagString: Untagged
@@ -139,8 +140,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &335808403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 335808401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d918ceb69f860d448ba1da0ab18eecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444003657
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +182,7 @@ Transform:
   m_Children:
   - {fileID: 753534195}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752890230
 GameObject:
@@ -456,7 +468,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4655621007586040, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301513264973416, guid: a1f2d5876de87e149b7cddf13da08fa5,
+        type: 2}
+      propertyPath: _immortal
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1f2d5876de87e149b7cddf13da08fa5, type: 2}
@@ -694,7 +711,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4360948377925432, guid: 28269c7e176806d47b1cf76bc23e9950, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4865694301312520, guid: 28269c7e176806d47b1cf76bc23e9950, type: 2}
       propertyPath: m_LocalPosition.x
